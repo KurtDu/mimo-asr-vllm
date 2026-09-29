@@ -1,0 +1,39 @@
+[build-system]
+requires = ["setuptools>=77", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mimo-asr-vllm"
+version = "0.1.0"
+description = "Fast MiMo-V2.5-ASR inference and OpenAI-compatible serving with vLLM"
+readme = "README.md"
+requires-python = ">=3.10"
+license = "Apache-2.0"
+keywords = ["asr", "speech-recognition", "vllm", "mimo", "xiaomi"]
+dependencies = [
+  "vllm[audio]>=0.30.0,<0.31",
+  "soundfile>=0.12",
+  "huggingface-hub",
+]
+
+[project.optional-dependencies]
+bench = ["jiwer>=3", "zhon", "openai"]
+test = ["pytest>=8"]
+
+[project.urls]
+Homepage = "https://github.com/KurtDu/mimo-asr-vllm"
+Issues = "https://github.com/KurtDu/mimo-asr-vllm/issues"
+Model = "https://huggingface.co/XiaomiMiMo/MiMo-V2.5-ASR"
+
+[project.scripts]
+mimo-asr = "mimo_asr_vllm.cli:main"
+
+# Registers MiMoV2ASRForCausalLM in every vLLM process (API server + workers).
+[project.entry-points."vllm.general_plugins"]
+mimo_asr = "mimo_asr_vllm:register"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

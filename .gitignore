@@ -1,0 +1,14 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv*/
+.pytest_cache/
+build/
+dist/
+*.safetensors
+*.pt
+*.wav
+*.flac
+results/
+.cache/
+.ruff_cache/
