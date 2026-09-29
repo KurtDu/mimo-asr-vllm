@@ -8,7 +8,7 @@ and ``vllm.LLM`` work directly. ``MiMoASR`` is a convenience batch API.
 import logging
 import os
 
-__version__ = "0.1.0"
+__version__ = "0.1.1"
 
 ARCHITECTURE = "MiMoV2ASRForCausalLM"
 SUPPORTED_VLLM = ((0, 30), (0, 31))  # [min, max)

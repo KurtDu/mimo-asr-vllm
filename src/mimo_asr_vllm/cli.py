@@ -8,6 +8,7 @@
 from __future__ import annotations
 
 import argparse
+import os
 import json
 import sys
 import time
@@ -58,6 +59,9 @@ def transcribe_main(argv: list[str]) -> None:
     args = p.parse_args(argv)
 
     files = _collect_inputs(args)
+    # vLLM logs to stdout by default, which would corrupt the JSONL output;
+    # must be set before vLLM is imported (also inherited by engine processes).
+    os.environ.setdefault("VLLM_LOGGING_STREAM", "ext://sys.stderr")
     from .asr import MiMoASR
 
     max_clip = args.max_clip_s

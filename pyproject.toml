@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "mimo-asr-vllm"
-version = "0.1.0"
+version = "0.1.1"
 description = "Fast MiMo-V2.5-ASR inference and OpenAI-compatible serving with vLLM"
 readme = "README.md"
 requires-python = ">=3.10"

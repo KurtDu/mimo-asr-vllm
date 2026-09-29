@@ -225,6 +225,7 @@ output) is never sampled.
 |---|---|
 | `CUDA error: the provided PTX was compiled with an unsupported toolchain` / `device kernel image is invalid` | The NVIDIA driver is older than the CUDA of your PyTorch wheel. Install the matching build (see [Install](#install)) or upgrade the driver. The plugin already disables FlashInfer sampling and probes FlashAttention in this case. |
 | `Free memory on device ... is less than desired GPU memory utilization` | Other processes use the GPU: lower `--gpu-memory-utilization` (e.g. `0.6`). |
+| `No available memory for the cache blocks` | the memory budget is too small, or another process on the same GPU allocated memory while vLLM was starting: use a less busy GPU or raise `--gpu-memory-utilization`. |
 | Out of memory on 24 GB GPUs | `--quantization fp8` (Ada/Hopper+), `--max-model-len 4096`, or `--max-num-seqs 64`. |
 | `413 Request Entity Too Large` / decode limit errors | raise `VLLM_MAX_AUDIO_CLIP_FILESIZE_MB` / `VLLM_MAX_AUDIO_DECODE_DURATION_S`. |
 | Audio tokenizer download is slow / blocked | download `XiaomiMiMo/MiMo-Audio-Tokenizer` once and set `MIMO_AUDIO_TOKENIZER_PATH`. |
