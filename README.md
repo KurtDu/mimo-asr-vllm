@@ -1,5 +1,7 @@
 # mimo-asr-vllm
 
+[![PyPI](https://img.shields.io/pypi/v/mimo-asr-vllm)](https://pypi.org/project/mimo-asr-vllm/)
+
 Fast inference and OpenAI-compatible serving of
 [**XiaomiMiMo/MiMo-V2.5-ASR**](https://huggingface.co/XiaomiMiMo/MiMo-V2.5-ASR) with
 [vLLM](https://github.com/vllm-project/vllm).
@@ -24,15 +26,16 @@ Requires Linux, Python ≥ 3.10 and an NVIDIA GPU with ≥ 24 GB of memory (bf16
 
 ```bash
 # NVIDIA driver >= 580 (CUDA 13):
-pip install "git+https://github.com/KurtDu/mimo-asr-vllm.git"
+pip install mimo-asr-vllm
 
 # NVIDIA driver 525-575 (CUDA 12.x): install vLLM's CUDA 12.9 build first
 pip install "https://github.com/vllm-project/vllm/releases/download/v0.30.0/vllm-0.30.0+cu129-cp38-abi3-manylinux_2_28_x86_64.whl" \
     --extra-index-url https://download.pytorch.org/whl/cu129
-pip install "git+https://github.com/KurtDu/mimo-asr-vllm.git"
+pip install mimo-asr-vllm
 ```
 
-(`nvidia-smi` shows your driver version. From a local checkout: `pip install .`)
+(`nvidia-smi` shows your driver version. Latest development version:
+`pip install "git+https://github.com/KurtDu/mimo-asr-vllm.git"`; from a local checkout: `pip install .`)
 
 The model (`XiaomiMiMo/MiMo-V2.5-ASR`) and the audio tokenizer (`XiaomiMiMo/MiMo-Audio-Tokenizer`)
 are downloaded from Hugging Face on first use. Set `HF_ENDPOINT` for a mirror, or
@@ -240,7 +243,7 @@ output) is never sampled.
 
 ## Reproduce the benchmarks
 
-See [`benchmarks/`](benchmarks/README.md).
+See [`benchmarks/`](https://github.com/KurtDu/mimo-asr-vllm/tree/main/benchmarks).
 
 ## License
 
